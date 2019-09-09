@@ -6,7 +6,8 @@ const connect_database = async() => {
 	try {
 		await mongoose.connect(process.env.DB_CON, {
 			useNewUrlParser: true,
-			useFindAndModify: true
+			useFindAndModify: true,
+			useCreateIndex: true
 		});
 	} catch(err) {
 		console.log(err.message);
