@@ -1,5 +1,9 @@
 import React from 'react';
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import './Home.css';
+
+import Tabs from './Tabs';
+import Table from './Table';
 
 class Home extends React.Component {
 	constructor(props) {
@@ -23,33 +27,14 @@ class Home extends React.Component {
 		const { transfers } = this.state;
 
 		return(
-			<div>
-				<h1>Esports Transfer Hub</h1>
-				{transfers.length ? (
-					<table>
-						<thead>
-							<th>Player</th>
-							<th>From</th>
-							<th>To</th>
-							<th>Status</th>
-						</thead>
-						<tbody>
-							{ transfers.map((item) => {
-								return(
-								<tr>
-									<td>{item.player.name}</td>
-									<td>{item.from_team.name}</td>
-									<td>{item.to_team.name}</td>
-									<td>{item.status}</td>
-								</tr>
-								);
-							}) }
-						</tbody>
-					</table>
-				) : (
-					<h1>Empty List</h1>
-				)}
-			</div>
+			<MDBContainer>
+				<MDBRow center>
+					<MDBCol lg="8" md="10" sm="12">
+						<Tabs/>
+						<Table list={transfers} />
+					</MDBCol>
+				</MDBRow>
+			</MDBContainer>
 		);
 	}
 }
