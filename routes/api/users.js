@@ -37,7 +37,7 @@ router.post('/', async (req,res) => {
 		jwt.sign(
 			payload,
 			process.env.JWT_SECRET,
-			{ expiresIn: 60*60 }, //TODO: Choose better value for expiresIn
+			{ expiresIn: '1h' }, //TODO: Choose better value for expiresIn
 			(err, token) => {
 				if(err) throw err;
 				res.json({ token });
