@@ -1,11 +1,12 @@
 const express = require('express');
+const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const router = express.Router();
 
 const Transfer = require('../../models/Transfer');
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
 	//TODO: Improve
 	const { player, from_team, to_team, status, sources, game } = req.body;
 	const transfer = {
@@ -36,6 +37,16 @@ router.get('/', async (req, res) => {
 	} catch(err) {
 		console.log(err);
 		res.status(500).send('Error GET api/transfers/');
+	}
+});
+
+router.get('/edit', auth, async (req, res) => {
+	try {
+		const transfers = await Transfer.find();
+		res.json(transfers);
+	} catch(err) {
+		console.log(err);
+		res.status(500).send('Error GET api/transfers/edit');
 	}
 });
 
