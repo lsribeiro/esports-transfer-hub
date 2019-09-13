@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { Grid } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom';
 
 import './Edit.css';
@@ -46,14 +46,18 @@ class Edit extends React.Component {
         	return <Redirect to="/login" />;
       	}
       	return (
-		  	<MDBContainer>
-			  	<MDBRow center>
-				  	<MDBCol lg="8" md="10" sm="12">
-					  	<Tabs/>
-					  	<Table list={transfers} />
-				  	</MDBCol>
-			  	</MDBRow>
-		  	</MDBContainer>
+			<React.Fragment>
+				<Grid centered columns={3}>
+					<Grid.Column>
+						<Tabs/>
+					</Grid.Column>
+				</Grid>
+				<Grid centered columns={2}>
+					<Grid.Column>
+						<Table list={transfers} />
+					</Grid.Column>
+				</Grid>
+			</React.Fragment>
       	);
     }
 

@@ -1,46 +1,30 @@
 import React from 'react';
+import { Tab } from 'semantic-ui-react'
+
 import './Tabs.css';
-import { MDBContainer, MDBNav, MDBNavItem, MDBNavLink } from "mdbreact";
 
-class Tabs extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			activeItem: "1"
-		};
+const panes = [
+	{
+		menuItem: 'All Games',
+		//render: () => <Tab.Pane attached={false}>Tab 1 Content</Tab.Pane>,
+	},
+	{
+		menuItem: 'CS: GO',
+		//render: () => <Tab.Pane attached={false}>Tab 2 Content</Tab.Pane>,
+	},
+	{
+		menuItem: 'Dota 2',
+		//render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
+	},
+	{
+		menuItem: 'LoL',
+		//render: () => <Tab.Pane attached={false}>Tab 3 Content</Tab.Pane>,
 	}
 
-	toggle = tab => e => { //TODO: Rerwite this
-		if(this.state.activeItem !== tab) {
-			this.setState({
-				activeItem: tab
-			});
-		}
-	}
+]
 
-	render() {
-		return(
-			<MDBContainer>
-				<MDBNav className="nav-tabs">
-					<MDBNavItem>
-						<MDBNavLink to="#" active={ this.state.activeItem === "1" } onClick={ this.toggle("1") } role="tab">
-							CS: GO
-						</MDBNavLink>
-					</MDBNavItem>
-					<MDBNavItem>
-						<MDBNavLink to="#" active={ this.state.activeItem === "2" } onClick={ this.toggle("2") } role="tab">
-							Dota 2
-						</MDBNavLink>
-					</MDBNavItem>
-					<MDBNavItem>
-						<MDBNavLink to="#" active={ this.state.activeItem === "3" } onClick={ this.toggle("3") } role="tab">
-							LoL
-						</MDBNavLink>
-					</MDBNavItem>
-				</MDBNav>
-			</MDBContainer>
-		);
-	}
-}
+const Tabs = () => (
+	<Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+)
 
 export default Tabs;

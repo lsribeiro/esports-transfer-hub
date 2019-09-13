@@ -1,5 +1,6 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { Grid } from 'semantic-ui-react'
+
 import './Home.css';
 
 import Tabs from './Tabs';
@@ -27,14 +28,18 @@ class Home extends React.Component {
 		const { transfers } = this.state;
 
 		return(
-			<MDBContainer>
-				<MDBRow center>
-					<MDBCol lg="8" md="10" sm="12">
+			<React.Fragment>
+				<Grid centered columns={3}>
+					<Grid.Column>
 						<Tabs/>
+					</Grid.Column>
+				</Grid>
+				<Grid centered columns={2}>
+					<Grid.Column>
 						<Table list={transfers} />
-					</MDBCol>
-				</MDBRow>
-			</MDBContainer>
+					</Grid.Column>
+				</Grid>
+			</React.Fragment>
 		);
 	}
 }

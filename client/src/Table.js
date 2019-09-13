@@ -1,37 +1,38 @@
 import React from 'react';
-import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+import { Table } from 'semantic-ui-react'
 
-class Table extends React.Component {
+//TODO: Choose better name for class
+class TransferTable extends React.Component {
 	render() {
 		return(
-			<MDBTable>
-				<MDBTableHead>
-					<tr>
-						<th>Country</th>
-						<th>Player</th>
-						<th>From</th>
-						<th>To</th>
-						<th>Status</th>
-						<th>Sources</th>
-					</tr>
-				</MDBTableHead>
-				<MDBTableBody>
+			<Table singleLine>
+				<Table.Header>
+					<Table.Row textAlign="center">
+						<Table.HeaderCell>Country</Table.HeaderCell>
+						<Table.HeaderCell>Player</Table.HeaderCell>
+						<Table.HeaderCell>From</Table.HeaderCell>
+						<Table.HeaderCell>To</Table.HeaderCell>
+						<Table.HeaderCell>Status</Table.HeaderCell>
+						<Table.HeaderCell>Sources</Table.HeaderCell>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
 					{ this.props.list.map((item, i) => {
 						return(
-							<tr key={i}>
-								<th>{item.player.country}</th>
-								<th>{item.player.name}</th>
-								<th>{item.from_team.name}</th>
-								<th>{item.to_team.name}</th>
-								<th>{item.status}</th>
-								<th>BUTTON</th>
-							</tr>
+							<Table.Row textAlign="center" key={i}>
+								<Table.Cell>{item.player.country}</Table.Cell>
+								<Table.Cell>{item.player.name}</Table.Cell>
+								<Table.Cell>{item.from_team.name}</Table.Cell>
+								<Table.Cell>{item.to_team.name}</Table.Cell>
+								<Table.Cell>{item.status}</Table.Cell>
+								<Table.Cell>BUTTON</Table.Cell>
+							</Table.Row>
 						);
 					}) }
-				</MDBTableBody>
-			</MDBTable>
+				</Table.Body>
+			</Table>
 		);
 	}
 }
 
-export default Table;
+export default TransferTable;

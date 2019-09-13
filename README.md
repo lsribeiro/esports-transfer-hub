@@ -6,7 +6,7 @@ Some of the information provided includes player names and nationality, team log
 The main goal of building this application is to showcase my **skills** as a web developer, and also to contribute to one of my favorite hobbies: esports.
 
 ## The stack
-The application uses **Express** for the back end, **React** for the front end and **Mongo** for the database. The app also uses **Bootstrap** and **Material Design** provided by *mdbreact*.
+The application uses **Express** for the back end, **React** for the front end and **Mongo** for the database. The app also uses **Semantic UI**.
 
 ### Current status
 The application is currently under development and is not ready for deployment yet.

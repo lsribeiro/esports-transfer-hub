@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { Grid, Form } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 
 import './Login.css';
@@ -47,13 +47,14 @@ class Login extends React.Component {
 	}
 
 	componentDidMount() {
-		authenticate().then((isAuthenticated) => {
-			if(!isAuthenticated) {
-				this.setState({ loading: false });
-			} else {
-				this.setState({ loading: false, redirect: true });
-			}
-		});
+		authenticate()
+			.then((isAuthenticated) => {
+				if(!isAuthenticated) {
+					this.setState({ loading: false });
+				} else {
+					this.setState({ loading: false, redirect: true });
+				}
+			});
 	}
 
 	render() {
@@ -63,40 +64,32 @@ class Login extends React.Component {
 
 		return(
 			//TODO: Improve form layout
-			<MDBContainer>
-				<MDBRow center>
-					<MDBCol lg="6" md="8" sm="10">
-						<form onSubmit={this.onSubmit}>
-							<p className="h5 text-center mb-4">Sign in</p>
-							<div className="grey-text">
-								<MDBInput
-									label="Type your email"
-									icon="envelope"
-									name="email"
-									type="email"
-									value={this.state.email}
-									onChange={this.handleChange}
-									required
-									validate
-								/>
-								<MDBInput
-									label="Type your password"
-									icon="lock"
-									name="password"
-									type="password"
-									value={this.state.password}
-									onChange={this.handleChange}
-									required
-									validate
-								/>
-							</div>
-							<div className="text-center">
-								<MDBBtn type="submit">Login</MDBBtn>
-							</div>
-						</form>
-					</MDBCol>
-				</MDBRow>
-			</MDBContainer>
+			<Grid centered columns={3}>
+				<Grid.Column>
+					<Form onSubmit={this.onSubmit}>
+						<p className="h5 text-center mb-4">Sign in</p>
+						<Form.Input
+							label="Type your email"
+							icon="envelope"
+							name="email"
+							type="email"
+							value={this.state.email}
+							onChange={this.handleChange}
+							required
+						/>
+						<Form.Input
+							label="Type your password"
+							icon="lock"
+							name="password"
+							type="password"
+							value={this.state.password}
+							onChange={this.handleChange}
+							required
+						/>
+						<Form.Button>Login</Form.Button>
+					</Form>
+				</Grid.Column>
+			</Grid>
 		);
 	}
 }
