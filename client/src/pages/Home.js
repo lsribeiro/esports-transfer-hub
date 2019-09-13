@@ -3,8 +3,8 @@ import { Grid } from 'semantic-ui-react'
 
 import './Home.css';
 
-import Tabs from './Tabs';
-import Table from './Table';
+import Tabs from '../components/Tabs';
+import Table from '../components/Table';
 
 class Home extends React.Component {
 	constructor(props) {

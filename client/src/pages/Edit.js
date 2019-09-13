@@ -4,10 +4,10 @@ import { Redirect } from 'react-router-dom';
 
 import './Edit.css';
 
-import Tabs from './Tabs';
-import Table from './Table';
+import Tabs from '../components/Tabs';
+import Table from '../components/Table';
 
-import authenticate from './utils/checkAuth.js';
+import authenticate from '../utils/checkAuth.js';
 
 //TODO: Fix code duplication
 

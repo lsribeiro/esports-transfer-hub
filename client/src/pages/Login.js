@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import './Login.css';
 
-import authenticate from './utils/checkAuth.js';
+import authenticate from '../utils/checkAuth.js';
 
 class Login extends React.Component {
 	constructor(props) {

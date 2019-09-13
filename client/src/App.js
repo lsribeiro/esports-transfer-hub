@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Home from './Home';
-import Login from './Login';
-import Edit from './Edit';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Edit from './pages/Edit';
 
 class App extends React.Component {
 	render() {
