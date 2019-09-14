@@ -1,4 +1,4 @@
 node_modules/
 client/node_modules
 .env
-resources/
+client/public/team-logos/

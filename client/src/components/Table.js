@@ -51,7 +51,7 @@ class TransferTable extends React.Component {
 									<Image src={logosPath + item.to_team.logo} size='mini' centered/>
 								</Table.Cell>
 								<Table.Cell>
-									<Icon color={status.color} name={status.name} size='big' />
+									<Icon color={status.color} name={status.name} size='large' />
 								</Table.Cell>
 								<Table.Cell>
 									<Modal trigger={news}>
