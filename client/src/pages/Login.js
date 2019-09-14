@@ -60,7 +60,7 @@ class Login extends React.Component {
 	render() {
 		const { loading, redirect } = this.state;
 		if (loading) { return null; }
-		if (redirect) { return <Redirect to="/edit" />; }
+		if (redirect) { return <Redirect to="/new" />; }
 
 		return(
 			//TODO: Improve form layout

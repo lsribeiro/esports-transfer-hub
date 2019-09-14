@@ -63,7 +63,6 @@ const TransferSchema = new mongoose.Schema({
 			},
 			date: {
 				type: Date,
-				required: true
 			}
 		}
 	],

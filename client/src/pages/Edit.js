@@ -6,6 +6,7 @@ import './Edit.css';
 
 import Tabs from '../components/Tabs';
 import Table from '../components/Table';
+import TransferForm from '../components/TransferForm';
 
 import authenticate from '../utils/checkAuth.js';
 
@@ -55,6 +56,11 @@ class Edit extends React.Component {
 				<Grid centered columns={2}>
 					<Grid.Column>
 						<Table list={transfers} />
+					</Grid.Column>
+				</Grid>
+				<Grid centered columns={1}>
+					<Grid.Column>
+						<TransferForm/>
 					</Grid.Column>
 				</Grid>
 			</React.Fragment>
