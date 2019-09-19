@@ -26,26 +26,29 @@ router.post('/', async (req, res) => {
 			return res.status(400).json({msg: 'User doesn\'t exist'}); //TODO: Better error handling
 		}
 
-		//TODO: Implement this on User schema
-		const pw_match = await bcrypt.compare(password, user.password);
-
-		if(!pw_match) {
-			return res.status(400).json({msg: 'Wrong password'});
-		}
-
-		const payload = {
-			user: {
-				id: user.id
+		user.comparePassword(password, (err, isMatch) => {
+			if(err) {
+				res.status(500).send('Server error');
 			}
-		};
 
-		//TODO: Put it in a function
-		jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1h'},
-			(err, token) => {
-				if(err) throw err;
-				res.cookie('token', token, { httpOnly: true }).sendStatus(200);
+			if(!isMatch) {
+				res.json({msg: 'password doesnt match'});
 			}
-		);
+
+			const payload = {
+				user: {
+					id: user.id
+				}
+			};
+
+			//TODO: Put it in a function
+			jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '1h'},
+				(err, token) => {
+					if(err) throw err;
+					res.cookie('token', token, { httpOnly: true }).sendStatus(200);
+				}
+			);
+		})
 	} catch (err) {
 		console.log(err);
 		res.status(500).send('Server error');
