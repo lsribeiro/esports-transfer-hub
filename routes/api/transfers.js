@@ -13,10 +13,9 @@ router.post('/', auth, async (req, res) => {
 		let newTransfer = new Transfer(transfer);
 
 		await newTransfer.save();
-		res.json({msg: "success" });
+		res.json({ type: "success", message: "New transfer created successfully" });
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('Error POST api/transfers/');
+		res.status(500).json({ type: "error", message: err.message });
 	}
 
 });
@@ -26,8 +25,7 @@ router.get('/', async (req, res) => {
 		const transfers = await Transfer.find();
 		res.json(transfers);
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('Error GET api/transfers/');
+		res.status(500).json({ type: "error", message: err.message });
 	}
 });
 
@@ -36,8 +34,7 @@ router.get('/edit', auth, async (req, res) => {
 		const transfers = await Transfer.find();
 		res.json(transfers);
 	} catch(err) {
-		console.log(err);
-		res.status(500).send('Error GET api/transfers/edit');
+		res.status(500).json({ type: "error", message: err.message });
 	}
 });
 

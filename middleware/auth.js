@@ -7,7 +7,7 @@ auth = (req, res, next) => {
 				  req.cookies.token;
 
 	if(!token) {
-		return res.status(401).json({msg: 'Authorization denied'});
+		return res.status(401).json({ type: "error", message: 'Not authorized' });
 	}
 
 	try {
@@ -16,7 +16,7 @@ auth = (req, res, next) => {
 			next();
 		});
 	} catch(err) {
-		res.status(401).json({msg: 'Invalid token'});
+		res.status(400).json({ type: "error", message: err.message });
 	}
 };
 

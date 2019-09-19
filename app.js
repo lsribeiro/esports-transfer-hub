@@ -15,7 +15,7 @@ app.use('/api/transfers', require('./routes/api/transfers'));
 app.use('/api/auth', require('./routes/api/auth'));
 
 app.get('/', (req, res) => {
-	res.status(200).send({status: "running"});
+	res.status(200).send({ type: "success", message: "App is running"});
 });
 
 app.listen(process.env.PORT, () => console.log(`Server running... Port: ${process.env.PORT}`));

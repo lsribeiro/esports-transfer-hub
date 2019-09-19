@@ -15,16 +15,10 @@ router.post('/', async (req,res) => {
 		let user = await User.findOne({ email });
 
 		if(user) {
-			return res
-				.status(400)
-				.json({
-					errors: [ { msg: 'Duplicate user' } ]
-				});
+			return res.status(400).json({ type: "error", message: "User already exists" });
 		}
 
-		user = new User({
-			email, password
-		});
+		user = new User({ email, password });
 
 		await user.save();
 
@@ -34,11 +28,7 @@ router.post('/', async (req,res) => {
 			}
 		};
 
-		jwt.sign(
-			payload,
-			process.env.JWT_SECRET,
-			{ expiresIn: '1h' }, //TODO: Choose better value for expiresIn
-			(err, token) => {
+		jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
 				if(err) throw err;
 				res.json({ token });
 			}
@@ -46,7 +36,7 @@ router.post('/', async (req,res) => {
 
 	} catch(err) {
 		console.log(err);
-		res.status(500).send('Error POST api/users/');
+		res.status(500).json({ type: "error", message: err.message });
 	}
 });
 
