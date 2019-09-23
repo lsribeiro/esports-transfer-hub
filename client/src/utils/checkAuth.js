@@ -2,19 +2,9 @@
 async function authenticate() {
 	let isAuthorized = false;
 
-	await fetch('/api/auth/')
-		.then(res => {
-			if (res.status === 200) {
-				isAuthorized = true;
-			} else {
-				const error = new Error();
-				throw error;
-			}
-		})
-		.catch(err => {
-			//TODO: Fix error handling
-			console.error(err);
-		});
+	let res = await fetch('/api/auth/');
+
+	if(res.status === 200) { isAuthorized = true; }
 
 	return isAuthorized;
 }
