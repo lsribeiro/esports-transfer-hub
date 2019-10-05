@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TransferForm extends React.Component {
+class SourcesForm extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -15,4 +15,4 @@ class TransferForm extends React.Component {
 	}
 }
 
-export default TransferForm;
+export default SourcesForm;

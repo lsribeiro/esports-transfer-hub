@@ -1,45 +1,28 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react'
 
-import './Home.css';
-
-import Tabs from '../components/Tabs';
-import Table from '../components/Table';
+import TransferTable from '../components/TransferTable';
 
 class Home extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			transfers: []
+			transferList:  []
 		};
 	}
 
-	componentDidMount() {
-		this.getList();
-	}
-
-	getList = () => {
+	getTransferList() {
 		fetch('/api/transfers')
 			.then(res => res.json())
-			.then(transfers => this.setState({ transfers }));
+			.then(transferList => this.setState({ transferList }));
+	}
+
+	componentDidMount() {
+		this.getTransferList();
 	}
 
 	render() {
-		const { transfers } = this.state;
-
-		return(
-			<React.Fragment>
-				<Grid centered columns={3}>
-					<Grid.Column>
-						<Tabs/>
-					</Grid.Column>
-				</Grid>
-				<Grid centered columns={2}>
-					<Grid.Column>
-						<Table list={transfers} />
-					</Grid.Column>
-				</Grid>
-			</React.Fragment>
+		return (
+			<TransferTable transferList={ this.state.transferList } />
 		);
 	}
 }
