@@ -1,10 +1,7 @@
-const initialState = {
-	transfers: []
-}
+import { combineReducers } from 'redux';
+import authReducer from './authReducer';
+import { reducer as formReducer } from 'redux-form';
 
-export default function rootReducert(state=initialState, action) {
-	switch (action.type) {
-		default:
-			return state;
-	}
-}
+const rootReducer = combineReducers({ auth: authReducer, form: formReducer });
+
+export default rootReducer;

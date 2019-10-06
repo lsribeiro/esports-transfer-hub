@@ -1,12 +1,14 @@
 //TODO: Refactor
-async function authenticate() {
-	let isAuthorized = false;
-
-	let res = await fetch('/api/auth/');
-
-	if(res.status === 200) { isAuthorized = true; }
-
-	return isAuthorized;
-}
+let authenticate = new Promise((resolve, reject) => {
+	fetch('/api/auth')
+		.then(res => res.json())
+		.then(data => {
+			if(data.type === 'error') {
+				reject(data);
+			} else {
+				resolve(data);
+			}
+		});
+});
 
 export default authenticate;
